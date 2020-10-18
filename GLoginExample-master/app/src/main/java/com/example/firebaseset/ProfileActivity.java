@@ -66,6 +66,7 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
 //                Db.setUserId(userId.getText().toString().trim());
 //                Db.setVal(v);
                 Reff.child(userName.getText().toString().trim()).setValue(v);
+                Toast.makeText(ProfileActivity.this,"Values pushed to realtime db",Toast.LENGTH_LONG).show();
 
 
             }

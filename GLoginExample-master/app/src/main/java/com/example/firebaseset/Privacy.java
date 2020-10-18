@@ -29,39 +29,98 @@ public class Privacy extends AppCompatActivity {
         s2 =(Switch)findViewById(R.id.switch3);
         fb = FirebaseAnalytics.getInstance(this);
 
-        s1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        SharedPreferences sharedPreferences = getSharedPreferences("save",MODE_PRIVATE);
+        s1.setChecked(sharedPreferences.getBoolean("value",false));
+        s1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b == true){
+            public void onClick(View view) {
+                if(s1.isChecked())
+                {
+                    SharedPreferences.Editor editor = getSharedPreferences("save",MODE_PRIVATE).edit();
+                    editor.putBoolean("value",true);
+                    editor.apply();
+                    s1.setChecked(true);
                     fb.setAnalyticsCollectionEnabled(false);
-                    Toast.makeText(getBaseContext(),"analytics not allowed",Toast.LENGTH_LONG).show();
-                }
 
+                    Toast.makeText(getBaseContext(),"Analytics data transfer are not allowed",Toast.LENGTH_LONG).show();
+                }
                 else
                 {
+                    SharedPreferences.Editor editor = getSharedPreferences("save",MODE_PRIVATE).edit();
+                    editor.putBoolean("value",false);
+                    editor.apply();
+                    s1.setChecked(false);
                     fb.setAnalyticsCollectionEnabled(true);
-                    Toast.makeText(getBaseContext(),"analytics allowed",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),"Analytics data are allowed",Toast.LENGTH_LONG).show();
                 }
             }
         });
 
-        s2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        SharedPreferences sharedPreference = getSharedPreferences("save1",MODE_PRIVATE);
+        s2.setChecked(sharedPreference.getBoolean("value1",false));
+        s2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b==true){
-
-
+            public void onClick(View view) {
+                if(s2.isChecked())
+                {
+                    SharedPreferences.Editor editor = getSharedPreferences("save1",MODE_PRIVATE).edit();
+                    editor.putBoolean("value1",true);
+                    editor.apply();
+                    s2.setChecked(true);
                     fb.setUserProperty( ALLOW_AD_PERSONALIZATION_SIGNALS, "false" );
                     fb.setAnalyticsCollectionEnabled(false);
-                    Toast.makeText(getBaseContext(),"ad not allowed",Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(getBaseContext(),"Ads are not allowed",Toast.LENGTH_LONG).show();
                 }
                 else
                 {
+                    SharedPreferences.Editor editor = getSharedPreferences("save1",MODE_PRIVATE).edit();
+                    editor.putBoolean("value1",false);
+                    editor.apply();
+                    s2.setChecked(false);
                     fb.setUserProperty( ALLOW_AD_PERSONALIZATION_SIGNALS, "true" );
                     fb.setAnalyticsCollectionEnabled(true);
-                    Toast.makeText(getBaseContext(),"ad allowed",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),"Ads related data are allowed",Toast.LENGTH_LONG).show();
                 }
             }
         });
+
+
+
+
+//        s1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if(b == true){
+//                    fb.setAnalyticsCollectionEnabled(false);
+//                    Toast.makeText(getBaseContext(),"analytics not allowed",Toast.LENGTH_LONG).show();
+//                }
+//
+//                else
+//                {
+//                    fb.setAnalyticsCollectionEnabled(true);
+//                    Toast.makeText(getBaseContext(),"analytics allowed",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
+//
+//        s2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if(b==true){
+//
+//
+//                    fb.setUserProperty( ALLOW_AD_PERSONALIZATION_SIGNALS, "false" );
+//                    fb.setAnalyticsCollectionEnabled(false);
+//                    Toast.makeText(getBaseContext(),"ad not allowed",Toast.LENGTH_LONG).show();
+//                }
+//                else
+//                {
+//                    fb.setUserProperty( ALLOW_AD_PERSONALIZATION_SIGNALS, "true" );
+//                    fb.setAnalyticsCollectionEnabled(true);
+//                    Toast.makeText(getBaseContext(),"ad allowed",Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
     }
 }
