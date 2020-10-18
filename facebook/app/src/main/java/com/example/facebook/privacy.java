@@ -64,7 +64,7 @@ public class privacy extends AppCompatActivity {
                     s2.setChecked(true);
                     FacebookSdk.setAutoLogAppEventsEnabled(false);
 
-                    Toast.makeText(getBaseContext(),"Auto logging events are not allowed",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),"Ad ID collections are not allowed",Toast.LENGTH_LONG).show();
                 }
                 else
                 {
@@ -73,7 +73,7 @@ public class privacy extends AppCompatActivity {
                     editor.apply();
                     s2.setChecked(false);
                     FacebookSdk.setAutoLogAppEventsEnabled(true);
-                    Toast.makeText(getBaseContext(),"Auto logging events are allowed",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),"Ad ID collections are allowed",Toast.LENGTH_LONG).show();
                 }
             }
         });
