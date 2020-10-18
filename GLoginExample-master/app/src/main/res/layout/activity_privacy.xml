@@ -44,7 +44,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:layout_below="@id/switch2"
-        android:text="Toggle to turn off Personalized adds"
+        android:text="Toggle to turn off Personalized ads"
         android:textSize="20dp" />
 
     <Switch
