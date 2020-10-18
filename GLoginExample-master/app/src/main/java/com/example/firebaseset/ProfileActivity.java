@@ -61,11 +61,11 @@ public class ProfileActivity extends AppCompatActivity implements GoogleApiClien
         push.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int v = Integer.parseInt(val.getText().toString().trim());
+//                int v = Integer.parseInt(val.getText().toString().trim());
 ////                Long user = Long.parseLong(userId.getText().toString().trim());
 //                Db.setUserId(userId.getText().toString().trim());
 //                Db.setVal(v);
-                Reff.child(userName.getText().toString().trim()).setValue(v);
+                Reff.child(userName.getText().toString().trim()).setValue(val.getText().toString().trim());
                 Toast.makeText(ProfileActivity.this,"Values pushed to realtime db",Toast.LENGTH_LONG).show();
 
 
